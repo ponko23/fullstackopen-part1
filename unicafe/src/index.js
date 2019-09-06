@@ -4,8 +4,22 @@ import ReactDOM from 'react-dom'
 const Button = ({onClick, text}) =>
     <button onClick={onClick}>{text}</button>
 
-const Statistics = ({text}) =>
-    <p>{text}</p>
+const Statistics = ({ good, neutral, bad, all, average, positive }) => {
+    if(all > 0) {
+        return (
+            <div>
+                <p>good {good}</p>
+                <p>neutral {neutral}</p>
+                <p>bad {bad}</p>
+                <p>all {all}</p>
+                <p>average {average}</p>
+                <p>positive {positive}%</p>
+            </div>
+        )
+    } else {
+        return <p>No feedback given</p>
+    }
+}
 
 const App = () => {
   // save clicks of each button to own state
@@ -44,12 +58,13 @@ const App = () => {
         <Button onClick={addNeutral} text='neutral' />
         <Button onClick={addBad} text='bad' />
         <h2>statistics</h2>
-        <Statistics text={`good ${good}`} />
-        <Statistics text={`neutral ${neutral}`} />
-        <Statistics text={`bad ${bad}`} />
-        <Statistics text={`all ${all}`} />
-        <Statistics text={`average ${average}`} />
-        <Statistics text={`positive ${positive}%`} />
+        <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad} all={all}
+            average={average}
+            positive={positive}
+        />
     </div>
   )
 }
