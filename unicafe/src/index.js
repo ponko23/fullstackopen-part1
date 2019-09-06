@@ -4,19 +4,27 @@ import ReactDOM from 'react-dom'
 const Button = ({onClick, text}) =>
     <button onClick={onClick}>{text}</button>
 
-const Static = ({text, value}) => <p>{text} {value}</p>
+const Static = ({text, value}) =>{
+    return (
+        <tr>
+            <td>{text}</td><td>{value}</td>
+        </tr>
+    )
+} 
 
 const Statistics = ({ good, neutral, bad, all, average, positive }) => {
     if(all > 0) {
         return (
-            <div>
-                <Static text='good' value={good} />
-                <Static text='neutral' value={neutral} />
-                <Static text='bad' value={bad} />
-                <Static text='all' value={all} />
-                <Static text='average' value={average} />
-                <Static text='positive' value={positive + '%'} />
-            </div>
+            <table>
+                <tbody>
+                    <Static text='good' value={good} />
+                    <Static text='neutral' value={neutral} />
+                    <Static text='bad' value={bad} />
+                    <Static text='all' value={all} />
+                    <Static text='average' value={average} />
+                    <Static text='positive' value={positive + '%'} />
+                </tbody>
+            </table>
         )
     } else {
         return <p>No feedback given</p>
