@@ -4,16 +4,18 @@ import ReactDOM from 'react-dom'
 const Button = ({onClick, text}) =>
     <button onClick={onClick}>{text}</button>
 
+const Static = ({text, value}) => <p>{text} {value}</p>
+
 const Statistics = ({ good, neutral, bad, all, average, positive }) => {
     if(all > 0) {
         return (
             <div>
-                <p>good {good}</p>
-                <p>neutral {neutral}</p>
-                <p>bad {bad}</p>
-                <p>all {all}</p>
-                <p>average {average}</p>
-                <p>positive {positive}%</p>
+                <Static text='good' value={good} />
+                <Static text='neutral' value={neutral} />
+                <Static text='bad' value={bad} />
+                <Static text='all' value={all} />
+                <Static text='average' value={average} />
+                <Static text='positive' value={positive + '%'} />
             </div>
         )
     } else {
